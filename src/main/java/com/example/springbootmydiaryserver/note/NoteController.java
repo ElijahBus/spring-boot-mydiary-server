@@ -2,6 +2,7 @@ package com.example.springbootmydiaryserver.note;
 
 import lombok.AllArgsConstructor;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,5 +37,10 @@ public class NoteController {
     @DeleteMapping("{noteId}")
     public String deleteNote(@PathVariable Long noteId) {
         return noteService.deleteNote(noteId);
-    }    
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> deleteAllNotes() {
+        return noteService.deleteAllNotes();
+    }
 }

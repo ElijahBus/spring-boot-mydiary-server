@@ -3,6 +3,7 @@ package com.example.springbootmydiaryserver.note;
 
 import lombok.AllArgsConstructor;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,10 +51,20 @@ public class NoteService {
     }
 
     public String deleteNote(Long noteId) {
-//        noteRepository.deleteById(noteId);
-
-        noteRepository.deleteAllInBatch(() -> noteRepository.findAll().iterator());
+        noteRepository.deleteById(noteId);
 
         return "Note successfully deleted";
     }
+
+    public ResponseEntity<String> deleteAllNotes() {
+        noteRepository.deleteAllInBatch(() -> noteRepository.findAll().iterator());
+
+        return ResponseEntity.ok("All notes successfully deleted");
+    }
 }
+
+
+/**
+ * 140, taxes
+ * warehouse 317 000,
+ */
