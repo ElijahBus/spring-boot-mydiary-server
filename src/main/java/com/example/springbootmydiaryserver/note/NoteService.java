@@ -62,9 +62,3 @@ public class NoteService {
         return ResponseEntity.ok("All notes successfully deleted");
     }
 }
-
-
-/**
- * 140, taxes
- * warehouse 317 000,
- */
