@@ -10,3 +10,4 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
 
     Optional<Note> findByTitle(String title);
 }
+    
