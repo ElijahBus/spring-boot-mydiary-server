@@ -15,11 +15,13 @@ public class NoteController {
     private final NoteService noteService;
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:8080")
     public List<Note> findAllNotes() {
         return noteService.findAllNotes();
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:8080")
     public Note saveNote(@RequestBody NoteRequest request) {
         return noteService.saveNote(request);
     }
