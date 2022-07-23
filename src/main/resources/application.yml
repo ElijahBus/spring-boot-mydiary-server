@@ -6,9 +6,9 @@ spring:
 #      on-profile: local
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/my_diary
-    username: bel
-    password: bel2
+    url: jdbc:postgresql://localhost:5433/my_diary
+    username: 'postgres'
+    password: root
 
   jpa:
     hibernate:

@@ -21,19 +21,20 @@ export default function useNotes(): NoteHook {
 
   let error: unknown = null;
 
-  const headers = {
-    "Authorization": "Basic dXNlcjpkNjM2MGE0NS01NmU3LTRmZTAtYmZiZC01MjE5OTNjMjY4ZjQ=",
-    "Access-Control-Allow-Origin": "*"
-  }
+  newNote = { title: '', content: '' }
 
   const save = (note: Note) => {
-    axios.post('http://localhost:8082/api/v1/notes', note, { headers })
-      .then(res => newNote = res.data)
+    fetch('http://localhost:8082/api/v1/notes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(note)
+    })
+      .then(res => console.log(JSON.stringify(res.body)))
       .catch(err => error = err);
   }
 
   const all = () => {
-    axios.get('http://localhost:8082/api/v1/notes', { headers })
+    axios.get('http://localhost:8082/api/v1/notes')
       .then(res => allNotes = res.data)
       .catch(err => error = err)
   }
